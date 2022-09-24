@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "chemchem"
+  site-url: "https://xrsrke.github.io/chemchem"
+  description: "A chemistry package!"
+  repo-branch: main
+  repo-url: "https://github.com/xrsrke/chemchem"
