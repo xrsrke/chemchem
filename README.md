@@ -14,8 +14,6 @@ pip install chemchem
 
 ### Thermochemistry
 
-![image.png](index_files/figure-gfm/fc7d218a-d42f-4294-b17c-768c6e3f5836.png)
-
 ``` python
 Al = Compound('Al')
 ```
