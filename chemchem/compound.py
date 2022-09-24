@@ -22,7 +22,7 @@ class Compound(chemlib.Compound):
     
     @property
     def heat_capacity(self):
-        pass
+        return self.mass * self.specific_heat
     
     def temperature(
         self,
@@ -34,11 +34,23 @@ class Compound(chemlib.Compound):
         self.name = name
         return self
 
-    def setAmount(self, **kwargs):
+    def setAmount(self, **kwargs): # set the amount by moles or mass of the compound
+    
+        if 'mass' in kwargs:
+            kwargs['grams'] = kwargs['mass'].to('grams').magnitude
+            kwargs.pop('mass')
+        
         amounts = self.get_amounts(**kwargs)
-        self.mass = amounts['grams']
-        self.moles = amounts['moles']
+        self.mass = Q(amounts['grams'], 'grams').to(Unit.MASS)
+        self.moles = Q(amounts['moles'], Unit.MOLE)
         return self
+
+    def setSpecificHeat(self, specific_heat):
+        self.specific_heat = specific_heat
+        return specific_heat
+
+    def heat(self, change_in_temperature):
+        return self.specific_heat * self.mass * change_in_temperature
 
 # %% ../nbs/01_compound.ipynb 23
 class CompoundBuilder():

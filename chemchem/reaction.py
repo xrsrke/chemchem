@@ -7,6 +7,7 @@ __all__ = ['Reaction']
 import pandas as pd
 from fastcore.test import test_eq
 import chemlib
+import pint
 
 from .core import *
 from .compound import *
