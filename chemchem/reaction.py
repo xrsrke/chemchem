@@ -3,7 +3,7 @@
 # %% auto 0
 __all__ = ['Reaction']
 
-# %% ../nbs/02_reaction.ipynb 3
+# %% ../nbs/02_reaction.ipynb 4
 import pandas as pd
 from fastcore.test import test_eq
 import chemlib

@@ -1,0 +1,9 @@
+website:
+  sidebar:
+    contents:
+      - index.ipynb
+      - 00_core.ipynb
+      - 01_compound.ipynb
+      - 02_reaction.ipynb
+      - 03_energy.ipynb
+      - 05_thermochemistry.ipynb

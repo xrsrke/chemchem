@@ -3,7 +3,7 @@
 # %% auto 0
 __all__ = ['Compound', 'CompoundBuilder']
 
-# %% ../nbs/01_compound.ipynb 3
+# %% ../nbs/01_compound.ipynb 4
 import pandas as pd
 import chemlib
 
