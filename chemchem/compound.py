@@ -5,30 +5,27 @@ __all__ = ['Compound', 'CompoundBuilder']
 
 # %% ../nbs/01_compound.ipynb 4
 import pandas as pd
+import sympy as smp
 import chemlib
 
 from .core import *
 
-# %% ../nbs/01_compound.ipynb 16
+# %% ../nbs/01_compound.ipynb 10
 class Compound(chemlib.Compound):
+    
+    # TODO: Add state
+    
     def __init__(self,
         formula: str # the chemical formula
     ):
         super().__init__(formula)
-        self.name = None
+        self.name = 'water'
         self.mass = None
+        self.mass_t = Symbol('m', self.formula)
         self.moles = None
         self.specific_heat = None
-    
-    @property
-    def heat_capacity(self):
-        return self.mass * self.specific_heat
-    
-    def temperature(
-        self,
-        idx # the time step
-    ): # time series for the changes in temperature
-        pass
+        self.temperature = pd.Series(data=[None],name="temperature")
+        self.state = None
     
     def setName(self, name):
         self.name = name
@@ -44,15 +41,34 @@ class Compound(chemlib.Compound):
         self.mass = Q(amounts['grams'], 'grams').to(Unit.MASS)
         self.moles = Q(amounts['moles'], Unit.MOLE)
         return self
-
+    
     def setSpecificHeat(self, specific_heat):
         self.specific_heat = specific_heat
         return specific_heat
+    
+    def temperature(
+        self,
+        idx # the time step
+    ): # time series for the changes in temperature
+        pass
+    
+    def setTemperature(
+        self,
+        value # the tempature
+    ): 
+        pass
 
     def heat(self, change_in_temperature):
         return self.specific_heat * self.mass * change_in_temperature
+    
+    @property
+    def heat_capacity(self):
+        
+        if not self.mass or not self.specific_heat:
+            return None
+        return self.mass * self.specific_heat
 
-# %% ../nbs/01_compound.ipynb 23
+# %% ../nbs/01_compound.ipynb 20
 class CompoundBuilder():
     
     def __init__(self, formula):

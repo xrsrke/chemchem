@@ -20,9 +20,16 @@ class Reaction(chemlib.Reaction):
     ):
         super().__init__(reactants, products)
     
+    def info(self):
+        return pd.DataFrame(data=[[1, 1, 1, 1]], columns=['Initial mass', 'Final mass', 'Initial energy', 'Final Energy'])
+    
     def table(self):
         molecules = []
+        columns = ['Name', 'Formula', 'Mass', 'Mole', 'Specifc Heat', 'Heat Capacity']
         for molecule in r2.reactants:
-            molecules.append([molecule.name, molecule.formula, molecule.mass, molecule.moles, 0])
+            molecules.append([
+                molecule.name, molecule.formula,
+                molecule.mass, molecule.moles,
+                molecule.specific_heat, molecule.heat_capacity])
         
-        return pd.DataFrame(data=molecules, columns=['Name', 'Formula', 'Mass', 'Mole', 'Specifc Heat'])
+        return pd.DataFrame(data=molecules, columns=columns)
