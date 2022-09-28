@@ -1,0 +1,65 @@
+[
+  {
+    "objectID": "thermochemistry.html",
+    "href": "thermochemistry.html",
+    "title": "Thermochemistry",
+    "section": "",
+    "text": "Thermal Reaction\n\nStandard Enthalpy\n\\(\\Delta_f H^{\\ominus}= \\sum v \\Delta_f H^{\\ominus}(\\) products \\()-\\sum v \\Delta_f H^{\\ominus}(\\) reactants \\()\\)\n\nsource\n\n\n\nThermalReaction\n\n ThermalReaction (reactants:list, products:list)\n\nInitialize self. See help(type(self)) for accurate signature.\n\n\n\n\nType\nDetails\n\n\n\n\nreactants\nlist\nlist of reactants\n\n\nproducts\nlist\nlist of products\n\n\n\n\nMgOH2 = Compound('Mg(OH)2')\n\n\nMgOH2.formula\n\n'O₂H₂Mg₁'\n\n\n\nMgO = Compound('MgO')\n\n\nH2O = Compound('H2O')\n\n\nH2O = Compound('H2O hello')\n\n\nH2O.__dict__\n\n{'occurences': {'H': 2, 'O': 1},\n 'elements': [<chemlib.chemistry.Element>,\n  <chemlib.chemistry.Element>,\n  <chemlib.chemistry.Element>],\n 'formula': 'H₂O₁',\n 'coefficient': 1,\n 'name': 'water',\n 'mass': None,\n 'mass_t': <chemchem.core.Symbol>,\n 'moles': None,\n 'specific_heat': None,\n 'temperature': 0    None\n Name: temperature, dtype: object}\n\n\n\nr = ThermalReaction(reactants=[MgOH2], products=[MgO, H2O])\n\n\nr.formula\n\n'1O₂H₂Mg₁ --> 1Mg₁O₁ + 1H₂O₁'\n\n\n\nr.balance()\n\nTrue\n\n\n\nr.formula\n\n'1O₂H₂Mg₁ --> 1Mg₁O₁ + 1H₂O₁'\n\n\n\nr.is_balanced\n\nTrue\n\n\n\nr.standard_enthalpy()\n\n\nr.products[1].__dict__\n\n{'occurences': {'H': 2, 'O': 1},\n 'elements': [<chemlib.chemistry.Element>,\n  <chemlib.chemistry.Element>,\n  <chemlib.chemistry.Element>],\n 'formula': 'H₂O₁',\n 'coefficient': 1,\n 'name': 'water',\n 'mass': None,\n 'mass_t': <chemchem.core.Symbol>,\n 'moles': None,\n 'specific_heat': None,\n 'temperature': 0    None\n Name: temperature, dtype: object}\n\n\n\n#dict(r.coefficients)['O₂H₂Mg₁]\n\n\nr.__dict__\n\n{'reactants': [<chemchem.compound.Compound>],\n 'products': [<chemchem.compound.Compound>,\n  <chemchem.compound.Compound>],\n 'compounds': [<chemchem.compound.Compound>,\n  <chemchem.compound.Compound>,\n  <chemchem.compound.Compound>],\n 'reactant_formulas': ['O₂H₂Mg₁'],\n 'product_formulas': ['Mg₁O₁', 'H₂O₁'],\n 'formula': '1O₂H₂Mg₁ --> 1Mg₁O₁ + 1H₂O₁',\n 'coefficients': {'O₂H₂Mg₁': 1, 'Mg₁O₁': 1, 'H₂O₁': 1},\n 'constituents': ['O₂H₂Mg₁', 'Mg₁O₁', 'H₂O₁'],\n 'reactant_occurences': {'O': 2, 'H': 2, 'Mg': 1},\n 'product_occurences': {'Mg': 1, 'O': 2, 'H': 2},\n 'is_balanced': True}\n\n\n\n\nCoffee Cup Reaction\n\nsource\n\n\nCoffeCup\n\n CoffeCup (reactants, products=None)\n\nInitialize self. See help(type(self)) for accurate signature.\n\nHI = Compound('HI')\n\n\nKOH = Compound('KOH')\n\n\nc = CoffeCup(reactants=[HI, KOH])\n\n\nc\n\n<__main__.CoffeCup>\n\n\n\nsource\n\n\nCoffeCupBuilder\n\n CoffeCupBuilder ()\n\nInitialize self. See help(type(self)) for accurate signature.\n\\[C=s \\times m \\]\n\ndef calculate_heat_capacity(specific_heat, mass):\n    return specific_heat * mass\n\n\n\nCalorimeter\n\n\nHess’s Law\n\n# TODO: Find an algorithm for hess's law\n\nC4H8, C4H4, O2, CO2, H2O\n\nA = np.array([\n        [0, 1, 5, 4, 2],\n        [1, 0, 6, 4, 2],\n        [0, 0, 1, 0, 2]\n    ])\n\n\nA\n\narray([[0, 1, 5, 4, 2],\n       [1, 0, 6, 4, 2],\n       [0, 0, 1, 0, 2]])\n\n\n\nA.shape\n\n(3, 5)\n\n\n(3, 4) x (4, 1) = (3,1)\n\nb = np.array([-2341, -2755, -571.6])\n\n\n#b.shape\n\n(3,)\n\n\n\n#np.linalg.solve(A, b)\n\nLinAlgError: Last 2 dimensions of the array must be square\n\n\n\nA = np.array([[-4, 6], [0,2]])\n\n\nb = np.array([-1516, -572])\n\n\nnp.linalg.solve(A,b)\n\narray([ -50., -286.])"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "chemchem",
+    "section": "",
+    "text": "This file will become your README and also the index of your documentation."
+  },
+  {
+    "objectID": "index.html#install",
+    "href": "index.html#install",
+    "title": "chemchem",
+    "section": "Install",
+    "text": "Install\npip install chemchem\n\nThermochemistry\n\nAl = Compound('Al')\n\n\nAl.get_amounts(grams=32.5)\n\n{'grams': 32.5, 'molecules': 7.251130383218443e+23, 'moles': 1.204506708175821}\n\n\n\n#Al.properties\n\n\nH2O = Compound('H2O')"
+  },
+  {
+    "objectID": "reaction.html",
+    "href": "reaction.html",
+    "title": "Reaction",
+    "section": "",
+    "text": "Reaction\n\n Reaction (reactants:list, products:list)\n\nInitialize self. See help(type(self)) for accurate signature.\n\n\n\n\nType\nDetails\n\n\n\n\nreactants\nlist\nlist of reactants\n\n\nproducts\nlist\nlist of products\n\n\n\n\npd.DataFrame(data=[[1, 1, 1, 1]], columns=['Initial mass', 'Final mass', 'Initial energy', 'Final Energy'])\n\n\n\n\n\n  \n    \n      \n      Initial mass\n      Final mass\n      Initial energy\n      Final Energy\n    \n  \n  \n    \n      0\n      1\n      1\n      1\n      1\n    \n  \n\n\n\n\n\nH2 = Compound('H2')\n\n\nO2 = Compound('O2')\n\n\nO2.setAmount(mass=Q(2.2, 'kilogram'))\n\n<chemchem.compound.Compound>\n\n\n\nO2.__dict__\n\n{'occurences': {'O': 2},\n 'elements': [<chemlib.chemistry.Element>,\n  <chemlib.chemistry.Element>],\n 'formula': 'O₂',\n 'coefficient': 1,\n 'name': None,\n 'mass': 2.2 <Unit('kilogram')>,\n 'moles': 68.75429714357148 <Unit('mole')>,\n 'specific_heat': None}\n\n\n\nH2O = Compound('H2O')\n\n\nr2 = Reaction(reactants=[H2, O2], products=[H2O])\n\n\nr2.table()\n\n\n\n\n\n  \n    \n      \n      Name\n      Formula\n      Mass\n      Mole\n      Specifc Heat\n      Heat Capacity\n    \n  \n  \n    \n      0\n      None\n      H₂\n      None\n      None\n      None\n      None\n    \n    \n      1\n      None\n      O₂\n      2.2 kilogram\n      68.75429714357148 mole\n      None\n      None\n    \n  \n\n\n\n\n\n#r2.reactants[1].temperature(0)"
+  },
+  {
+    "objectID": "core.html",
+    "href": "core.html",
+    "title": "Core",
+    "section": "",
+    "text": "Unit\n\n Unit ()\n\nDefault Units\n\npressure = Q(1.3, Unit.PRESSURE)\n\n\nmass = Q(21.2, Unit.MASS)\n\n\nmass._dimensionality\n\n\nmass.__dict__\n\n{'_magnitude': 21.2,\n '_units': <UnitsContainer({'kilogram': 1})>,\n '_Quantity__used': False,\n '_Quantity__handling': None}\n\n\n\nmoles = Q(0.214, Unit.MOLE)\n\n\nspecific_heat = Q(0.235, Unit.SPECIFIC_HEAT)\n\n\nspecific_heat\n\n0.235 joule/(kelvin kilogram)\n\n\n\nspecific_heat.units\n\njoule/(kelvin kilogram)\n\n\n\nQ(593, 'torr').to(Unit.PRESSURE)\n\n79060.16447368421 pascal\n\n\n\n\nDimensional Analysis\nCheck whether a quantity belong to particular dimension\n\nsource\n\n\nDimensionalAnalysis\n\n DimensionalAnalysis ()\n\nInitialize self. See help(type(self)) for accurate signature.\n\n\nSymbols\n\nsource\n\n\nSymbol\n\n Symbol (symbol:str, name:str)\n\nInitialize self. See help(type(self)) for accurate signature.\n\n\n\n\nType\nDetails\n\n\n\n\nsymbol\nstr\nthe symbol\n\n\nname\nstr\nthe name of the symbol\n\n\n\n\ntype(smp.symbols('x'))\n\nsympy.core.symbol.Symbol\n\n\n\nm = Symbol('m', 'truck')\n\n\nm.__dict__\n\n{'name': m_truck, 'value': None}\n\n\n\nm.name\n\nm_truck\n\n\n\nm.value\n\n\nm.is_empty\n\nTrue\n\n\n\nm.setValue(Q(2.2, 'kilogram'))\n\n<__main__.Symbol>\n\n\n\nm.value\n\n2.2 kilogram"
+  },
+  {
+    "objectID": "utils.html",
+    "href": "utils.html",
+    "title": "Utils",
+    "section": "",
+    "text": "source\n\nliter_to_mole\n\n liter_to_mole (liter)\n\n\nm1 = liter_to_mole(Q(10.0, 'liter'))\n\n\nm1\n\n0.44642857142857145 mole"
+  },
+  {
+    "objectID": "compound.html",
+    "href": "compound.html",
+    "title": "Compound",
+    "section": "",
+    "text": "H2O.__dict__\n\n{'occurences': {'H': 2, 'O': 1},\n 'elements': [<chemlib.chemistry.Element>,\n  <chemlib.chemistry.Element>,\n  <chemlib.chemistry.Element>],\n 'formula': 'H₂O₁',\n 'coefficient': 1}\n\n\n\nH2O\n\n<chemlib.chemistry.Compound>\n\n\n\nfrom mendeleev import Fe\n\n\nFe.specific_heat_capacity\n\n0.449\n\n\n\nsource\n\nCompound\n\n Compound (formula:str)\n\nRepresents a chemical compound.\n\n\n\n\nType\nDetails\n\n\n\n\nformula\nstr\nthe chemical formula\n\n\n\n\nH2O = Compound('H2O')\n\n\nH2O.setAmount(mass=Q(2.2, 'kilograms'))\n\n<__main__.Compound>\n\n\n\nH2O.setName('water')\n\n<__main__.Compound>\n\n\n\nstr(H2O.formula)\n\n'H₂O₁'\n\n\n\nH2O.__dict__\n\n{'occurences': {'H': 2, 'O': 1},\n 'elements': [<chemlib.chemistry.Element>,\n  <chemlib.chemistry.Element>,\n  <chemlib.chemistry.Element>],\n 'formula': 'H₂O₁',\n 'coefficient': 1,\n 'name': 'water',\n 'mass': 2.2 <Unit('kilogram')>,\n 'mass_t': <chemchem.core.Symbol>,\n 'moles': 122.12045517624202 <Unit('mole')>,\n 'specific_heat': None,\n 'temperature': 0    None\n Name: temperature, dtype: object,\n 'state': None}\n\n\n\nH2O.specific_heat\n\n\nH2O.setName('water')\n\n<__main__.Compound>\n\n\n\nH2 = Compound('H2')\n\n\nH2.setAmount(volume=Q(10, 'liter'))\n\n<__main__.Compound>\n\n\n\n\nCompound Builder\n\nsource\n\n\nCompoundBuilder\n\n CompoundBuilder (formula)\n\nInitialize self. See help(type(self)) for accurate signature.\n\nCompoundBuilder('H2O').__dict__\n\n{'compound': <__main__.Compound>}"
+  },
+  {
+    "objectID": "gas.html",
+    "href": "gas.html",
+    "title": "Gas",
+    "section": "",
+    "text": "source\n\nPressure\n\n Pressure ()\n\nInitialize self. See help(type(self)) for accurate signature.\n\np = Pressure()\n\n\np.data\n\nSeries([], Name: Pressure over time, dtype: object)\n\n\n\np.append(2312)\n\n<__main__.Pressure>\n\n\n\nsource\n\n\nGas\n\n Gas (formula:str)\n\nRepresents a chemical compound.\n\n\n\n\nType\nDetails\n\n\n\n\nformula\nstr\nthe chemical formula\n\n\n\n\n\nGas’s Laws\n\nsource\n\n\nGasLaw\n\n GasLaw ()\n\nInitialize self. See help(type(self)) for accurate signature.\n\nGasLaw().charles_law()\n\nEq(t_1/v_1, t_2/v_2)\n\n\n\nGasLaw().avogadro_law()\n\nEq(n_1/v_1, n_2/v_2)\n\n\n\ndef boylelaw():\n    p1, v1, p2, v2 = smp.symbols('p_1 v_1 p_2 v_2')\n    return smp.Eq(p1*v1, p2*v2)\n\n\nboylelaw()\n\nEq(p_1*v_1, p_2*v_2)\n\n\n\nboylelaw().subs([('p_1', 2), ('v_2', 5)])\n\nEq(2*v_1, 5*p_2)\n\n\nGas’s law using a different unit from the SI unit\n\nsource\n\n\nUnitGas\n\n UnitGas ()\n\nDefault Units"
+  },
+  {
+    "objectID": "energy.html",
+    "href": "energy.html",
+    "title": "Energy",
+    "section": "",
+    "text": "Energy\n\n Energy ()\n\nInitialize self. See help(type(self)) for accurate signature.\n\n\nWork\n\nsource\n\n\nWork\n\n Work ()\n\nInitialize self. See help(type(self)) for accurate signature.\n\n\nHeat\n\nsource\n\n\nHeat\n\n Heat ()\n\nInitialize self. See help(type(self)) for accurate signature."
+  }
+]
