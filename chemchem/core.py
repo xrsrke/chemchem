@@ -24,7 +24,7 @@ class Unit:
     TEMPERATURE = 'kelvin'
     
     # Derived from SI Unit
-    MOLE = 'moles'
+    MOLE = 'mole'
     SPECIFIC_HEAT = 'joule / (kilogram kelvin)'
     PRESSURE = 'pascal'
 
@@ -32,13 +32,13 @@ class Unit:
 ureg = pint.UnitRegistry(system='SI')
 Q = ureg.Quantity # quantity
 
-# %% ../nbs/00_core.ipynb 22
+# %% ../nbs/00_core.ipynb 23
 class DimensionalAnalysis:
     
     # TODO: Add
     pass
 
-# %% ../nbs/00_core.ipynb 24
+# %% ../nbs/00_core.ipynb 25
 class Symbol:
     def __init__(
         self,

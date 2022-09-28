@@ -8,7 +8,10 @@ import pandas as pd
 import sympy as smp
 import chemlib
 
+from fastcore.test import test_eq
+
 from .core import *
+from .utils import liter_to_mole
 
 # %% ../nbs/01_compound.ipynb 10
 class Compound(chemlib.Compound):
@@ -36,6 +39,11 @@ class Compound(chemlib.Compound):
         if 'mass' in kwargs:
             kwargs['grams'] = kwargs['mass'].to('grams').magnitude
             kwargs.pop('mass')
+        elif 'volume' in kwargs:
+            # add convert liter to mass
+            mole = liter_to_mole(kwargs['volume'])
+            kwargs['moles'] = mole.magnitude
+            kwargs.pop('volume')
         
         amounts = self.get_amounts(**kwargs)
         self.mass = Q(amounts['grams'], 'grams').to(Unit.MASS)
@@ -68,7 +76,7 @@ class Compound(chemlib.Compound):
             return None
         return self.mass * self.specific_heat
 
-# %% ../nbs/01_compound.ipynb 20
+# %% ../nbs/01_compound.ipynb 25
 class CompoundBuilder():
     
     def __init__(self, formula):
